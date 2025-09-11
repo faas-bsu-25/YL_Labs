@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgjpl22eoqikf"]
+
+[ext_resource type="Texture2D" uid="uid://drrma6c7ntavt" path="res://shump/sprites/blue.png" id="1_2vevv"]
+
+[node name="BG" type="Node2D"]
+
+[node name="Blue" type="Sprite2D" parent="."]
+position = Vector2(574, 323.5)
+scale = Vector2(4.51563, 2.55859)
+texture = ExtResource("1_2vevv")

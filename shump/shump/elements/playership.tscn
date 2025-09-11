@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj866khw8nfk8"]
+
+[ext_resource type="Script" uid="uid://cmycggyikiyra" path="res://shump/scrips/playership.gd" id="1_keq8n"]
+[ext_resource type="PackedScene" uid="uid://3oqybhpmore3" path="res://shump/elements/laser.tscn" id="2_dpcqw"]
+[ext_resource type="Texture2D" uid="uid://bgfkoot7ixitd" path="res://shump/sprites/playerShip1_orange.png" id="2_thwfu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqeo2"]
+size = Vector2(59, 74)
+
+[node name="playership" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_keq8n")
+bullet_element = ExtResource("2_dpcqw")
+
+[node name="PlayerShip1Orange" type="Sprite2D" parent="."]
+texture = ExtResource("2_thwfu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -3)
+shape = SubResource("RectangleShape2D_xqeo2")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://djb11kvyhp4a"]
+
+[ext_resource type="PackedScene" uid="uid://cgjpl22eoqikf" path="res://shump/elements/bg.tscn" id="1_hfusm"]
+[ext_resource type="Script" uid="uid://drco3aog31io2" path="res://shump/scrips/shump.gd" id="1_yyh26"]
+[ext_resource type="PackedScene" uid="uid://bj866khw8nfk8" path="res://shump/elements/playership.tscn" id="2_n6q7k"]
+[ext_resource type="Script" uid="uid://djo4bifart3i0" path="res://shump/scrips/enemy_spawner.gd" id="3_n6q7k"]
+[ext_resource type="AudioStream" uid="uid://dn1n2jv87344a" path="res://shump/explosion.wav" id="5_xqeo2"]
+
+[node name="Shump" type="Node2D" node_paths=PackedStringArray("txtScore")]
+script = ExtResource("1_yyh26")
+txtScore = NodePath("Label")
+
+[node name="BG" parent="." instance=ExtResource("1_hfusm")]
+
+[node name="playership" parent="." instance=ExtResource("2_n6q7k")]
+position = Vector2(544, 514)
+
+[node name="EnemySpawner" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+script = ExtResource("3_n6q7k")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 985.0
+offset_top = 30.0
+offset_right = 1025.0
+offset_bottom = 53.0
+scale = Vector2(2.71085, 2.46153)
+text = "0"
+
+[node name="SFXExplosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xqeo2")
+
+[connection signal="timeout" from="EnemySpawner" to="EnemySpawner" method="_on_timeout"]
