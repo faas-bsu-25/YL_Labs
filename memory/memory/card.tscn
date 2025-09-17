@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbm4mqfgvxc3c"]
+
+[ext_resource type="Texture2D" uid="uid://bt7cgdp5q76r5" path="res://memory/sprites/card_back.png" id="1_ya77h"]
+[ext_resource type="Script" uid="uid://5pchfh5i4cti" path="res://memory/card.gd" id="2_g5usb"]
+
+[node name="Card" type="TextureRect"]
+offset_right = 189.0
+offset_bottom = 229.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_ya77h")
+script = ExtResource("2_g5usb")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
