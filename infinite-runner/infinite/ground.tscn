@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dop462m85yidk"]
+
+[ext_resource type="Script" uid="uid://dn4r0qm2iiqv7" path="res://infinite/ground_move.gd" id="1_0lup4"]
+[ext_resource type="Texture2D" uid="uid://ciwrx1v7loxhf" path="res://infinite/sprite/platforms.png" id="2_2sk0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_favgj"]
+size = Vector2(178, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dq34"]
+atlas = ExtResource("2_2sk0q")
+region = Rect2(16.2092, 0, 31.7502, 8.85945)
+
+[node name="Ground" type="StaticBody2D"]
+script = ExtResource("1_0lup4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(300, 121)
+shape = SubResource("RectangleShape2D_favgj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(301, 121)
+scale = Vector2(5.73387, 5.75)
+texture = SubResource("AtlasTexture_1dq34")

@@ -1,0 +1,176 @@
+[gd_scene load_steps=25 format=3 uid="uid://d20hflvwjbka5"]
+
+[ext_resource type="SpriteFrames" uid="uid://bmoy8q6m6h7vu" path="res://infinite/player_frames.tres" id="1_uq53y"]
+[ext_resource type="Script" uid="uid://dk8yklk8stucn" path="res://infinite/ground_spawner.gd" id="1_v7c3h"]
+[ext_resource type="PackedScene" uid="uid://dop462m85yidk" path="res://infinite/ground.tscn" id="2_favgj"]
+[ext_resource type="Script" uid="uid://hj2vnb1yt772" path="res://infinite/inf_player.gd" id="2_v7c3h"]
+[ext_resource type="Script" uid="uid://kcjus1cau5m" path="res://infinite/coin.gd" id="5_1dq34"]
+[ext_resource type="AudioStream" uid="uid://bxgby7i42qvdv" path="res://infinite/sounds/jump.wav" id="5_2gaa7"]
+[ext_resource type="Texture2D" uid="uid://cwp202xag7lj3" path="res://infinite/sprite/coin.png" id="6_87mr2"]
+[ext_resource type="AudioStream" uid="uid://bax6bbamwx5pb" path="res://infinite/sounds/crash.wav" id="6_krt8l"]
+[ext_resource type="AudioStream" uid="uid://c77b2t40g3172" path="res://infinite/sounds/Ludum Dare 38 - Track 2.wav" id="9_42mon"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vvy8n"]
+radius = 31.0
+height = 116.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0or3r"]
+size = Vector2(34, 35)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gaa7"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krt8l"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42mon"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uhv8"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gext"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs1a4"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yt0v"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vubhw"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8sqv"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpaot"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyjir"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc5yt"]
+atlas = ExtResource("6_87mr2")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0qv1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gaa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krt8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42mon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uhv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gext")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fs1a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yt0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vubhw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8sqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpaot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyjir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc5yt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="InfiniteRunner" type="Node2D"]
+
+[node name="Ground_spawner" type="Node2D" parent="."]
+position = Vector2(977, 398)
+script = ExtResource("1_v7c3h")
+
+[node name="Timer" type="Timer" parent="Ground_spawner"]
+autostart = true
+
+[node name="Ground" parent="." instance=ExtResource("2_favgj")]
+position = Vector2(-72, 421)
+
+[node name="Ground2" parent="." instance=ExtResource("2_favgj")]
+position = Vector2(171, 424)
+
+[node name="Ground3" parent="." instance=ExtResource("2_favgj")]
+position = Vector2(421, 425)
+
+[node name="Ground4" parent="." instance=ExtResource("2_favgj")]
+position = Vector2(669, 423)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(223, 359)
+script = ExtResource("2_v7c3h")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_vvy8n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(-17, -49)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("1_uq53y")
+animation = &"hurt"
+autoplay = "default"
+
+[node name="SFX" type="Node2D" parent="Player"]
+
+[node name="jump" type="AudioStreamPlayer" parent="Player/SFX"]
+stream = ExtResource("5_2gaa7")
+
+[node name="Crash" type="AudioStreamPlayer" parent="Player/SFX"]
+stream = ExtResource("6_krt8l")
+
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(908, 438)
+script = ExtResource("5_1dq34")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0or3r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_a0qv1")
+autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_42mon")
+autoplay = true
+
+[connection signal="timeout" from="Ground_spawner/Timer" to="Ground_spawner" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="Player/AnimatedSprite2D" to="Player" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
