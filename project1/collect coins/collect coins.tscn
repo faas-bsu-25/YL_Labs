@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://bqxtwoi82o6sh"]
+
+[ext_resource type="Texture2D" uid="uid://cwwumypchu6h2" path="res://collect coins/sprites/purple.png" id="1_45sme"]
+[ext_resource type="Script" uid="uid://13673r7r130j" path="res://collect coins/collect_coins_score.gd" id="1_xl27h"]
+[ext_resource type="Script" uid="uid://xucyvhrvj2y3" path="res://collect coins/player_bag.gd" id="2_7rvyu"]
+[ext_resource type="PackedScene" uid="uid://yihdvbafu2wd" path="res://coins.tscn" id="4_nuog7"]
+[ext_resource type="Texture2D" uid="uid://dok86lubiuoq6" path="res://collect coins/sprites/normal bag.png" id="4_xl27h"]
+[ext_resource type="Script" uid="uid://chtliue43tf1u" path="res://collect coins/wall_1.gd" id="6_8y3jk"]
+[ext_resource type="Texture2D" uid="uid://cirf6kdspj16j" path="res://collect coins/sprites/wall.png" id="6_um2ld"]
+[ext_resource type="Script" uid="uid://bl5jct8b20oi5" path="res://collect coins/coin_spawne.gd" id="8_0j4jc"]
+[ext_resource type="Script" uid="uid://oyra4utq4km2" path="res://collect coins/wall_2.gd" id="8_xl27h"]
+[ext_resource type="Script" uid="uid://d4m4ylqxv2mwq" path="res://collect coins/wall_3.gd" id="9_4841v"]
+[ext_resource type="AudioStream" uid="uid://b1vgqjmjy8omj" path="res://collect coins/sprites/pickupCoin.wav" id="11_4841v"]
+[ext_resource type="AudioStream" uid="uid://tstap8t7qb6t" path="res://collect coins/sprites/令人兴奋的(Exciting)_爱给网_aigei_com.Mp3" id="12_fjl7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jp24c"]
+size = Vector2(399, 62.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um2ld"]
+size = Vector2(1240, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y3jk"]
+size = Vector2(66, 767)
+
+[node name="collect coins" type="Node2D" node_paths=PackedStringArray("txtScore")]
+script = ExtResource("1_xl27h")
+txtScore = NodePath("Label")
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="Purple" type="Sprite2D" parent="background"]
+position = Vector2(570.5, 323)
+scale = Vector2(4.79297, 2.78906)
+texture = ExtResource("1_45sme")
+
+[node name="playerBag" type="CharacterBody2D" parent="."]
+position = Vector2(537, 495)
+scale = Vector2(0.451561, 0.515566)
+motion_mode = 1
+script = ExtResource("2_7rvyu")
+metadata/_edit_group_ = true
+
+[node name="NormalBag" type="Sprite2D" parent="playerBag"]
+position = Vector2(34, -64)
+texture = ExtResource("4_xl27h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerBag"]
+position = Vector2(33.5, -63.25)
+shape = SubResource("RectangleShape2D_jp24c")
+
+[node name="coins" parent="." instance=ExtResource("4_nuog7")]
+position = Vector2(502, 83)
+
+[node name="wall1" type="CharacterBody2D" parent="."]
+position = Vector2(574, 680)
+script = ExtResource("6_8y3jk")
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="wall1"]
+scale = Vector2(1.43271, 1)
+texture = ExtResource("6_um2ld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall1"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_um2ld")
+
+[node name="wall2" type="CharacterBody2D" parent="."]
+position = Vector2(-37, 263)
+script = ExtResource("8_xl27h")
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="wall2"]
+rotation = -1.57229
+scale = Vector2(0.879655, 1.15845)
+texture = ExtResource("6_um2ld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8y3jk")
+
+[node name="wall3" type="CharacterBody2D" parent="."]
+position = Vector2(1188, 264)
+script = ExtResource("9_4841v")
+metadata/_edit_group_ = true
+
+[node name="Wall" type="Sprite2D" parent="wall3"]
+rotation = -1.57229
+scale = Vector2(0.879655, 1.15845)
+texture = ExtResource("6_um2ld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_8y3jk")
+
+[node name="coinSpawne" type="Timer" parent="."]
+autostart = true
+script = ExtResource("8_0j4jc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 8.0
+offset_right = 54.0
+offset_bottom = 57.0
+scale = Vector2(5.00344, 3.62094)
+text = "0
+"
+
+[node name="pickupCoin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_4841v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_fjl7f")
+volume_db = -19.81
+autoplay = true
+
+[connection signal="timeout" from="coinSpawne" to="coinSpawne" method="_on_timeout"]
