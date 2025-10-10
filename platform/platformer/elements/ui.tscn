@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bguagw5y5yn08"]
+
+[ext_resource type="Script" uid="uid://y48wotledspv" path="res://platformer/ui.gd" id="1_0ya6k"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_0ya6k")
+
+[node name="txtCoins" type="Label" parent="."]
+offset_left = 441.0
+offset_top = 8.0
+offset_right = 481.0
+offset_bottom = 31.0
+text = "0"

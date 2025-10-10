@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://jvvxpjxb4gct"]
+
+[ext_resource type="SpriteFrames" uid="uid://baoblnw4mdu4v" path="res://platformer/enemy_animation.tres" id="2_c6h87"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3l8i"]
+radius = 9.0
+height = 18.0
+
+[node name="enemy" type="CharacterBody2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(299, 166)
+shape = SubResource("CapsuleShape2D_u3l8i")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(299, 159)
+sprite_frames = ExtResource("2_c6h87")
+autoplay = "default"
+frame_progress = 0.811422

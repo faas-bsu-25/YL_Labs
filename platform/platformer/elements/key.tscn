@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://vqq2a440p3sw"]
+
+[ext_resource type="Script" uid="uid://bdy20k28805tv" path="res://platformer/scripts/key.gd" id="1_sljba"]
+[ext_resource type="Texture2D" uid="uid://yhfi61stwh8s" path="res://platformer/sprites/fruit.png" id="2_n3u1r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_84ixd"]
+radius = 8.0
+height = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iaws"]
+atlas = ExtResource("2_n3u1r")
+region = Rect2(0, 0, 17.7142, 18.5718)
+
+[node name="key" type="Area2D"]
+script = ExtResource("1_sljba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 152)
+shape = SubResource("CapsuleShape2D_84ixd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 153)
+texture = SubResource("AtlasTexture_1iaws")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
