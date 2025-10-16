@@ -1,0 +1,214 @@
+[gd_scene load_steps=23 format=3 uid="uid://pi20xyfkcela"]
+
+[ext_resource type="Script" uid="uid://bbit8s88ojuaf" path="res://BEUPplayer.gd" id="1_rtt68"]
+[ext_resource type="Texture2D" uid="uid://b6e5x4recur4e" path="res://adventurer-1.3-Sheet.png" id="2_rtt68"]
+[ext_resource type="Texture2D" uid="uid://cucn4ecbcfvsv" path="res://icon.svg" id="3_g63n3"]
+[ext_resource type="Script" uid="uid://cnia6ot4kr88t" path="res://badnik.gd" id="3_i7c2v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i7c2v"]
+radius = 7.25
+
+[sub_resource type="Animation" id="Animation_i7c2v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BEUPplayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BEUPplayer/AttackRegion:process_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_my62v"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BEUPplayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BEUPplayer/AttackRegion:process_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00832128, 0.205472, 0.362936),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 0, 4]
+}
+
+[sub_resource type="Animation" id="Animation_g63n3"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BEUPplayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_56emt"]
+resource_name = "walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BEUPplayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.266667, 0.333333, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xdpiy"]
+_data = {
+&"RESET": SubResource("Animation_i7c2v"),
+&"attack": SubResource("Animation_my62v"),
+&"idle": SubResource("Animation_g63n3"),
+&"walk": SubResource("Animation_56emt")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rtt68"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g63n3"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i7c2v"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_56emt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_my62v"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xdpiy"]
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b876a"]
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w3gd4"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wqoon"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b876a"]
+states/Start/position = Vector2(210.286, 89.576)
+states/attack/node = SubResource("AnimationNodeAnimation_rtt68")
+states/attack/position = Vector2(517.09, 201.674)
+states/idle/node = SubResource("AnimationNodeAnimation_g63n3")
+states/idle/position = Vector2(365.089, 90)
+states/walk/node = SubResource("AnimationNodeAnimation_i7c2v")
+states/walk/position = Vector2(646.803, 89.0204)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_56emt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_my62v"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_xdpiy"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_b876a"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_w3gd4"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_wqoon")]
+graph_offset = Vector2(137.661, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7c2v"]
+size = Vector2(12.125, 32.625)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_56emt"]
+
+[node name="BeatEmUp" type="Node2D"]
+
+[node name="BEUPplayer" type="CharacterBody2D" parent="."]
+position = Vector2(121, 87)
+scale = Vector2(4, 4)
+script = ExtResource("1_rtt68")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BEUPplayer"]
+shape = SubResource("CapsuleShape2D_i7c2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="BEUPplayer"]
+texture = ExtResource("2_rtt68")
+hframes = 8
+vframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BEUPplayer"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_xdpiy")
+}
+autoplay = "walk"
+
+[node name="AnimationTree" type="AnimationTree" parent="BEUPplayer"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_b876a")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+parameters/conditions/idle = false
+parameters/conditions/walk = false
+
+[node name="AttackRegion" type="Area2D" parent="BEUPplayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BEUPplayer/AttackRegion"]
+position = Vector2(11.1875, 2.1875)
+shape = SubResource("RectangleShape2D_i7c2v")
+
+[node name="badnik" type="CharacterBody2D" parent="." groups=["enemy"]]
+position = Vector2(623, 97)
+scale = Vector2(4, 4)
+script = ExtResource("3_i7c2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="badnik"]
+shape = SubResource("CapsuleShape2D_56emt")
+
+[node name="Sprite2D" type="Sprite2D" parent="badnik"]
+scale = Vector2(0.134709, 0.216474)
+texture = ExtResource("3_g63n3")
+
+[node name="ProgressBar" type="ProgressBar" parent="badnik"]
+offset_left = -14.25
+offset_top = 13.25
+offset_right = 30.75
+offset_bottom = 40.25
+scale = Vector2(0.646481, 0.614285)
+max_value = 5.0
+value = 5.0
+
+[connection signal="body_entered" from="BEUPplayer/AttackRegion" to="BEUPplayer" method="_on_attack_region_body_entered"]
