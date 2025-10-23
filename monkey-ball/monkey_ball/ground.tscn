@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjy8dnjpioaln"]
+
+[ext_resource type="Material" uid="uid://dawfxufjpj4vc" path="res://monkey_ball/m_ground_material.tres" id="1_sop7v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l5r2v"]
+size = Vector3(4.24229, 0.237305, 2.15606)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o4i4p"]
+
+[node name="Ground" type="StaticBody3D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96346, -0.381348, 1.051)
+shape = SubResource("BoxShape3D_l5r2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.25447, 0, 0, 0, 0.24329, 0, 0, 0, 2.16909, 1.93853, -0.39052, 1.03005)
+material_override = ExtResource("1_sop7v")
+mesh = SubResource("BoxMesh_o4i4p")

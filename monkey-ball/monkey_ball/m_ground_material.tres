@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dawfxufjpj4vc"]
+
+[ext_resource type="Texture2D" uid="uid://bhv8k1yv5cgtv" path="res://monkey_ball/rogue_texture.png" id="1_xw4rs"]
+
+[resource]
+albedo_color = Color(0.0705882, 0.580392, 0, 1)
+albedo_texture = ExtResource("1_xw4rs")
