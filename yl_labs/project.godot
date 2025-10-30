@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="YL_Labs"
+run/main_scene="uid://byo1k4uu2huym"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://behcmf3ecqlfm"
+path="res://.godot/imported/project2 _bgm.wav-19378a74d483f44e699cd3b226afbb32.sample"
+
+[deps]
+
+source_file="res://platformer/sprites/project2 _bgm.wav"
+dest_files=["res://.godot/imported/project2 _bgm.wav-19378a74d483f44e699cd3b226afbb32.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

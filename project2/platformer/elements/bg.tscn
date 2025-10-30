@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuane26egovrx"]
+
+[ext_resource type="Texture2D" uid="uid://bk155twahjuhn" path="res://platformer/sprites/universal.jpg" id="1_6s2ff"]
+
+[node name="BG" type="Parallax2D"]
+scroll_scale = Vector2(0.01, 0.01)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(542.5, 316)
+scale = Vector2(5.25, 5.2973)
+texture = ExtResource("1_6s2ff")

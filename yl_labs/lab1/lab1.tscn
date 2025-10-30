@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://byo1k4uu2huym"]
+
+[ext_resource type="Texture2D" uid="uid://d0g4qetsik5r7" path="res://aseets/fish_blue.png" id="1_4keiy"]
+[ext_resource type="Texture2D" uid="uid://c0vvf26beixky" path="res://aseets/bubble_b.png" id="2_gldyp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FishBlue" type="Sprite2D" parent="."]
+position = Vector2(503.5, 345)
+scale = Vector2(7.98437, 7.1875)
+texture = ExtResource("1_4keiy")
+
+[node name="BubbleB" type="Sprite2D" parent="."]
+position = Vector2(977, 144)
+scale = Vector2(4.32031, 4.53906)
+texture = ExtResource("2_gldyp")

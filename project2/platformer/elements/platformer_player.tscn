@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtbaiisgo5wft"]
+
+[ext_resource type="Script" uid="uid://ci7yt7sr4kdgh" path="res://platformer/scripts/platformer_player.gd" id="1_sxuu0"]
+[ext_resource type="SpriteFrames" uid="uid://ctd6bhtt5ws34" path="res://platformer/platformer_player_frames.tres" id="2_aaww4"]
+[ext_resource type="Script" uid="uid://bbb52brg73niv" path="res://platformer/scripts/platformer_animator.gd" id="3_ss8jl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g07xu"]
+radius = 12.0
+height = 34.0
+
+[node name="platformerPlayer" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_sxuu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 3)
+shape = SubResource("CapsuleShape2D_g07xu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = ExtResource("2_aaww4")
+animation = &"run"
+autoplay = "default"
+frame_progress = 0.191816
+
+[node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("3_ss8jl")
+animated_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 4)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0

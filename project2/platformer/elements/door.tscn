@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkeqkt5grogaq"]
+
+[ext_resource type="Script" uid="uid://dsnw7p52jlwnh" path="res://platformer/scripts/door.gd" id="1_y64ac"]
+[ext_resource type="Texture2D" uid="uid://yhfi61stwh8s" path="res://platformer/sprites/fruit.png" id="2_mcv30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5ibo"]
+size = Vector2(34, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh24p"]
+atlas = ExtResource("2_mcv30")
+region = Rect2(16.5714, 48.2861, 16.5714, 15.7139)
+
+[node name="door" type="Area2D"]
+script = ExtResource("1_y64ac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-88, -34)
+shape = SubResource("RectangleShape2D_x5ibo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-85, -30.75)
+scale = Vector2(2.25, 2.76667)
+texture = SubResource("AtlasTexture_xh24p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

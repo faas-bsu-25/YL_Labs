@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://mdvi7vjpo0wt"]
+
+[ext_resource type="Script" uid="uid://cqct3216e0hbu" path="res://platformer/dialog_box.gd" id="1_pb1wk"]
+
+[node name="DialogBox" type="Panel"]
+visible = false
+offset_left = 255.0
+offset_top = 116.0
+offset_right = 264.0
+offset_bottom = 123.0
+pivot_offset = Vector2(-2, 0)
+script = ExtResource("1_pb1wk")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Brave young man, our country's princess has been captured. We hope you can rescue our princess. You need to get the key to pass through that door..."

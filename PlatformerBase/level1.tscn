@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhcaup6f5wm1f"]
+
+[ext_resource type="Script" uid="uid://dsqnijgggr3id" path="res://Player.gd" id="1_273ar"]
+[ext_resource type="Texture2D" uid="uid://gf8hkgjjtg1a" path="res://prototyping_assets/Characters/character_0000.png" id="1_emkt1"]
+[ext_resource type="Texture2D" uid="uid://c8eq5atbpqvjl" path="res://prototyping_assets/Characters/character_0001.png" id="3_78rcn"]
+[ext_resource type="Script" uid="uid://gf5mj1md4cd6" path="res://GameController.gd" id="3_okkwb"]
+[ext_resource type="PackedScene" uid="uid://wokgixou3e57" path="res://diamond.tscn" id="4_3bc6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4nvf"]
+size = Vector2(330, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5kr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emkt1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_emkt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_78rcn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1rbs"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(111, 135)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 119)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(65, 1)
+shape = SubResource("RectangleShape2D_e4nvf")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_273ar")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_w5kr0")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_b1rbs")
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("3_okkwb")
+
+[node name="Diamond" parent="." instance=ExtResource("4_3bc6e")]

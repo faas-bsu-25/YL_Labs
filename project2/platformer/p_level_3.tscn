@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjsgeq4skcsti"]
+
+[ext_resource type="PackedScene" uid="uid://cuane26egovrx" path="res://platformer/elements/bg.tscn" id="1_h7yta"]
+[ext_resource type="TileSet" uid="uid://dwitawgpne74" path="res://platformer/platformer_tile_set.tres" id="1_t0sju"]
+[ext_resource type="PackedScene" uid="uid://dvjeyw33t4p7" path="res://platformer/elements/coin.tscn" id="2_nbgoh"]
+[ext_resource type="PackedScene" uid="uid://dtbaiisgo5wft" path="res://platformer/elements/platformer_player.tscn" id="3_xyvvr"]
+[ext_resource type="PackedScene" uid="uid://bguagw5y5yn08" path="res://platformer/elements/ui.tscn" id="4_h7yta"]
+[ext_resource type="PackedScene" uid="uid://jvvxpjxb4gct" path="res://platformer/elements/enemy.tscn" id="6_sdi7q"]
+[ext_resource type="Texture2D" uid="uid://qm2gyqs5ulai" path="res://platformer/sprites/princes.png" id="8_f0umb"]
+[ext_resource type="Script" uid="uid://7ibq6jvi25iq" path="res://platformer/princes_talk.gd" id="9_chngj"]
+[ext_resource type="PackedScene" uid="uid://mdvi7vjpo0wt" path="res://platformer/elements/dialog_box.tscn" id="10_0sjb3"]
+[ext_resource type="PackedScene" uid="uid://bwq28owgfbi8f" path="res://platformer/music.tscn" id="10_f0umb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwv0e"]
+size = Vector2(1600, 696.47)
+
+[node name="p_level_3" type="Node2D"]
+
+[node name="BG" parent="." instance=ExtResource("1_h7yta")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_t0sju")
+format = 2
+layer_0/tile_data = PackedInt32Array(393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, 720922, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 589862, 0, 0, 589863, 0, 0, 589864, 0, 0, 589865, 0, 0, 589866, 0, 0, 589867, 0, 0, 589868, 0, 0, 393266, 0, 0, 393267, 0, 0, 393268, 0, 0, 393269, 0, 0, 393270, 0, 0, 393271, 0, 0, 393272, 0, 0, 393273, 0, 0, 458810, 0, 0, 458811, 0, 0, 458812, 0, 0, 458813, 0, 0, 458814, 0, 0, 458815, 0, 0, 458816, 0, 0, 1441859, 0, 0, 1507395, 0, 0, 1572930, 0, 0, 1638466, 0, 0, 1704002, 0, 0, 1769538, 0, 0, 1835074, 0, 0, 1900610, 0, 0, 1966145, 0, 0, 2031681, 0, 0, 2097217, 0, 0, 2031679, 0, 0, 2031678, 0, 0, 2031677, 0, 0, 2031676, 0, 0, 2031675, 0, 0, 2097210, 0, 0, 2097209, 0, 0, 2097208, 0, 0, 2097207, 0, 0, 2097206, 0, 0, 2097205, 0, 0, 2097204, 0, 0, 2097203, 0, 0, 2097202, 0, 0, 2097201, 0, 0, 2162736, 0, 0, 2162735, 0, 0, 2162734, 0, 0, 2162733, 0, 0, 2162732, 0, 0, 2162692, 0, 0, 2162693, 0, 0, 2162694, 0, 0, 2162695, 0, 0, 2162696, 0, 0, 2162697, 0, 0, 2162698, 0, 0, 2162699, 0, 0, 2228236, 0, 0, 2228237, 0, 0, 2228238, 0, 0, 2228239, 0, 0, 2228240, 0, 0, 2228241, 0, 0, 2228242, 0, 0, 2228243, 0, 0, 2228244, 0, 0, 2228245, 0, 0, 2228246, 0, 0, 2228247, 0, 0, 2228248, 0, 0, 2228249, 0, 0, 2293786, 0, 0, 2293787, 0, 0, 2293788, 0, 0, 2293789, 0, 0, 2293790, 0, 0, 2293791, 0, 0, 2293792, 0, 0, 2752521, 0, 0, 2752522, 0, 0, 2752523, 0, 0, 2752524, 0, 0, 2818061, 0, 0, 2818062, 0, 0, 2818063, 0, 0, 2818064, 0, 0, 2818065, 0, 0, 2818066, 0, 0, 2818067, 0, 0, 2883604, 0, 0, 2883605, 0, 0, 2883606, 0, 0, 2883607, 0, 0, 2883608, 0, 0, 2883609, 0, 0, 2883610, 0, 0, 2949147, 0, 0, 2949148, 0, 0, 2949149, 0, 0, 2949150, 0, 0, 2555953, 0, 0, 2555954, 0, 0, 2621491, 0, 0, 2621492, 0, 0, 2621493, 0, 0, 2621494, 0, 0, 2687031, 0, 0, 2687032, 0, 0, 2687033, 0, 0, 2752570, 0, 0, 2752571, 0, 0, 2621476, 0, 0, 2621477, 0, 0, 2621478, 0, 0, 2621479, 0, 0, 2621480, 0, 0, 2359363, 0, 0, 2359364, 0, 0, 2359365, 0, 0, 2359366, 0, 0, 2293831, 0, 0, 2293832, 0, 0, 2293833, 0, 0, 2293834, 0, 0, 2293835, 0, 0, 2293836, 0, 0, 2293837, 0, 0, 2293838, 0, 0, 2228303, 0, 0, 2228304, 0, 0, 2228305, 0, 0, 2228306, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1245205, 0, 0, 1245206, 0, 0, 1245207, 0, 0, 1245208, 0, 0, 1245209, 0, 0, 1245210, 0, 0, 1245211, 0, 0, 1245212, 0, 0, 1245213, 0, 0, 1245214, 0, 0, 1245215, 0, 0, 1245216, 0, 0, 1245217, 0, 0, 1245218, 0, 0, 1245219, 0, 0, 1245220, 0, 0, 1245221, 0, 0, 1245222, 0, 0, 1245223, 0, 0, 1245224, 0, 0, 1245225, 0, 0, 1245226, 0, 0, 1245227, 0, 0, 1245228, 0, 0, 1245229, 0, 0, 1245230, 0, 0, 1245231, 0, 0, 1245232, 0, 0, 1310768, 0, 0, 1376304, 0, 0, 1376305, 0, 0, 1441841, 0, 0, 1441842, 0, 0, 1441843, 0, 0, 1507379, 0, 0, 1507380, 0, 0, 1507381, 0, 0, 1507382, 0, 0, 1572918, 0, 0, 1572919, 0, 0, 1769506, 0, 0, 1769507, 0, 0, 1769508, 0, 0, 1769509, 0, 0, 1769510, 0, 0, 1769511, 0, 0, 1769512, 0, 0, 2555966, 0, 0, 2555967, 0, 0, 2555968, 0, 0, 2555969, 0, 0, 1835071, 0, 0, 1704000, 0, 0, 1376325, 0, 0, 1376326, 0, 0, 1376324, 0, 0)
+
+[node name="Coin" parent="." instance=ExtResource("2_nbgoh")]
+position = Vector2(546, 104)
+scale = Vector2(1.28831, 1.28248)
+
+[node name="Coin2" parent="." instance=ExtResource("2_nbgoh")]
+position = Vector2(334, 146)
+scale = Vector2(1.28831, 1.28248)
+
+[node name="Coin3" parent="." instance=ExtResource("2_nbgoh")]
+position = Vector2(616, 279)
+scale = Vector2(1.28831, 1.28248)
+
+[node name="platformerPlayer" parent="." instance=ExtResource("3_xyvvr")]
+position = Vector2(79, 69)
+
+[node name="UI" parent="." instance=ExtResource("4_h7yta")]
+
+[node name="enemy" parent="." instance=ExtResource("6_sdi7q")]
+position = Vector2(276, 276)
+
+[node name="Princes" type="Sprite2D" parent="."]
+position = Vector2(141, 509)
+scale = Vector2(0.05, 0.053125)
+texture = ExtResource("8_f0umb")
+
+[node name="Area2D" type="Area2D" parent="Princes"]
+script = ExtResource("9_chngj")
+dialog_box_path = NodePath("../../ui_princes_talk/DialogBox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Princes/Area2D"]
+position = Vector2(-40, 9.41211)
+shape = SubResource("RectangleShape2D_wwv0e")
+
+[node name="ui_princes_talk" type="CanvasLayer" parent="."]
+
+[node name="DialogBox" parent="ui_princes_talk" instance=ExtResource("10_0sjb3")]
+
+[node name="label_princes" type="Label" parent="ui_princes_talk/DialogBox"]
+layout_mode = 0
+offset_left = -255.0
+offset_top = -116.0
+offset_right = -215.0
+offset_bottom = -93.0
+
+[node name="music" parent="." instance=ExtResource("10_f0umb")]
+
+[connection signal="body_entered" from="Princes/Area2D" to="Princes/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Princes/Area2D" to="Princes/Area2D" method="_on_body_exited"]

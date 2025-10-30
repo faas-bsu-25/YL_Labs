@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwq28owgfbi8f"]
+
+[ext_resource type="AudioStream" uid="uid://behcmf3ecqlfm" path="res://platformer/sprites/project2 _bgm.wav" id="1_i4bmo"]
+
+[node name="music" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_i4bmo")
+volume_db = -10.0
+autoplay = true
