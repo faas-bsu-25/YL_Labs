@@ -22,3 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 		await $Audio_Coin.finished
 		queue_free()
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.

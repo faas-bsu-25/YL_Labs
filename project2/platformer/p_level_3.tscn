@@ -51,6 +51,7 @@ texture = ExtResource("8_f0umb")
 [node name="Area2D" type="Area2D" parent="Princes"]
 script = ExtResource("9_chngj")
 dialog_box_path = NodePath("../../ui_princes_talk/DialogBox")
+win_panel_path = NodePath("../../Panel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Princes/Area2D"]
 position = Vector2(-40, 9.41211)
@@ -68,6 +69,23 @@ offset_right = -215.0
 offset_bottom = -93.0
 
 [node name="music" parent="." instance=ExtResource("10_f0umb")]
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = 73.0
+offset_top = 74.0
+offset_right = 113.0
+offset_bottom = 114.0
+scale = Vector2(4.64, 2.72)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = -5.81897
+offset_top = 94.4853
+offset_right = 59.181
+offset_bottom = 117.485
+scale = Vector2(1.08105, 1.76456)
+text = "you win!"
 
 [connection signal="body_entered" from="Princes/Area2D" to="Princes/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Princes/Area2D" to="Princes/Area2D" method="_on_body_exited"]
