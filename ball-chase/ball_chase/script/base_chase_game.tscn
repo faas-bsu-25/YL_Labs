@@ -1,0 +1,114 @@
+[gd_scene load_steps=15 format=3 uid="uid://1pdjfwxyvaju"]
+
+[ext_resource type="Script" uid="uid://7jik5xah54if" path="res://ball_chase/player.gd" id="1_d0rkx"]
+[ext_resource type="PackedScene" uid="uid://qndnsh28717u" path="res://ball_chase/modle/number-0.glb" id="2_27b5b"]
+[ext_resource type="Material" uid="uid://bdcndcev3s1bo" path="res://ball_chase/materials/ball_ground_materia.tres" id="4_27b5b"]
+[ext_resource type="Script" uid="uid://ck3aqre86jkgm" path="res://ball_chase/script/dog.gd" id="5_7nckm"]
+[ext_resource type="Material" uid="uid://dhgt6i2yk8bba" path="res://ball_chase/materials/sellectable_material.tres" id="5_465uw"]
+[ext_resource type="PackedScene" uid="uid://f6fviojdiiwy" path="res://ball_chase/modle/animal-dog.glb" id="6_uneso"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7nckm"]
+height = 4.22131
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uneso"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_t3ks6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nckm"]
+size = Vector3(0.28186, 0.358154, 0.154785)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_t3ks6"]
+vertices = PackedVector3Array(-0.494652, 0.34299, -4.57503, 0.755348, 0.34299, -4.32503, 0.755348, 0.34299, -47.325, -0.744652, 0.34299, -3.82503, -44.7447, 0.34299, -47.325, -44.7447, 0.34299, -3.82503, 2.00535, 0.34299, -4.57503, 2.25535, 0.34299, -4.07503, 44.7553, 0.34299, -4.07503, 44.7553, 0.34299, -47.325, 44.7553, 0.34299, -2.82503, 2.00535, 0.34299, -3.07503, 0.255348, 0.34299, -2.57503, 1.00535, 0.34299, -2.82503, 1.00535, 0.34299, -3.07503, -0.494652, 0.34299, -3.07503, 1.00535, 0.34299, -1.32503, 0.255348, 0.34299, -1.57503, -44.7447, 0.34299, 47.425, 1.00535, 0.34299, 47.425, 2.00535, 0.34299, -2.57503, 2.00535, 0.34299, -1.57503, 44.7553, 0.34299, 47.425)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 3, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 2), PackedInt32Array(6, 1, 2), PackedInt32Array(8, 10, 7), PackedInt32Array(7, 10, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(17, 16, 5), PackedInt32Array(5, 16, 19), PackedInt32Array(5, 19, 18), PackedInt32Array(12, 17, 15), PackedInt32Array(15, 17, 5), PackedInt32Array(15, 5, 3), PackedInt32Array(14, 11, 13), PackedInt32Array(13, 11, 20), PackedInt32Array(20, 11, 10), PackedInt32Array(21, 10, 16), PackedInt32Array(16, 10, 19), PackedInt32Array(19, 10, 22), PackedInt32Array(21, 20, 10)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_465uw"]
+size = Vector3(127.845, 0.313416, 127.819)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7nckm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ejevm"]
+radius = 0.354994
+height = 0.864919
+
+[node name="BaseChaseGame" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00261688, 0.0948195, -0.0132916)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0.494393, -0.666916, 0.557493, -0.0746728, 0.606402, 0.791645, -0.088192, 2.90765, 0)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_d0rkx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_7nckm")
+
+[node name="Camera3D" type="Camera3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 0.997653, -0.0684683, 0, 0.0684683, 0.997653, -0.000333071, 0.561389, 0.103843)
+fov = 103.124
+
+[node name="RayCast3D" type="RayCast3D" parent="player/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.983296, 0.182013, 0, -0.182013, 0.983296, 0.0199492, 0.00963849, -0.085603)
+target_position = Vector3(0, 0, -4.5)
+
+[node name="pickupjoin" type="Generic6DOFJoint3D" parent="player/Camera3D"]
+node_a = NodePath("../..")
+
+[node name="CamRotator" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0813241, 0)
+
+[node name="ball" type="RigidBody3D" parent="." groups=["pickaball"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.274838, -2.21289, -1.63745)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00188065, 2.6916, 0.0448816)
+shape = SubResource("SphereShape3D_uneso")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ball"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.67074, 0)
+material_override = ExtResource("5_465uw")
+mesh = SubResource("SphereMesh_t3ks6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.886679, 0.29222, -2.03534)
+shape = SubResource("BoxShape3D_7nckm")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_t3ks6")
+
+[node name="number-02" parent="NavigationRegion3D" instance=ExtResource("2_27b5b")]
+transform = Transform3D(0.715502, 0.049719, 0.69684, -0.0693212, 0.997594, 0, -0.695163, -0.0483058, 0.717227, 1.12715, 0.0189675, -2.05045)
+
+[node name="number-03" parent="NavigationRegion3D" instance=ExtResource("2_27b5b")]
+transform = Transform3D(0.715502, 0.049719, 0.69684, -0.0693212, 0.997594, 0, -0.695163, -0.0483058, 0.717227, 0.112493, 0.0189675, -3.7486)
+
+[node name="number-04" parent="NavigationRegion3D" instance=ExtResource("2_27b5b")]
+transform = Transform3D(0.715502, 0.049719, 0.69684, -0.0693212, 0.997594, 0, -0.695163, -0.0483058, 0.717227, 1.40829, 0.0189675, -3.7486)
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.708593, 0, 0, 0, 0.708593, 0, 0, 0, 0.708593, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0710926, -0.316475, -0.409043)
+shape = SubResource("BoxShape3D_465uw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
+transform = Transform3D(127.631, 0, 0, 0, 1, 0, 0, 0, 135, 0.154953, -0.427204, 0.00704193)
+material_override = ExtResource("4_27b5b")
+mesh = SubResource("BoxMesh_7nckm")
+
+[node name="Dog" type="CharacterBody3D" parent="."]
+script = ExtResource("5_7nckm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00143814, 0.699253, -7.6965)
+shape = SubResource("CapsuleShape3D_ejevm")
+
+[node name="animal-dog2" parent="Dog/CollisionShape3D" instance=ExtResource("6_uneso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.224877, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Dog"]

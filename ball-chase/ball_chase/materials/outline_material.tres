@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://e8br5uace5y"]
+
+[ext_resource type="Shader" uid="uid://dsxeqrw312eqx" path="res://ball_chase/materials/outline_shader.gdshader" id="1_0kn12"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0kn12")
+shader_parameter/outline_color = Color(0.721569, 0.709804, 0.0470588, 1)
+shader_parameter/outline_width = 0.0
